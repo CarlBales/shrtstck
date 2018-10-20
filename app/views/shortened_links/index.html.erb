@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shortened Links</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Original url</th>
+      <th>Short url slug</th>
+      <th>Visit count</th>
+      <th>Is expired</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shortened_links.each do |shortened_link| %>
+      <tr>
+        <td><%= shortened_link.original_url %></td>
+        <td><%= shortened_link.short_url_slug %></td>
+        <td><%= shortened_link.visit_count %></td>
+        <td><%= shortened_link.is_expired %></td>
+        <td><%= link_to 'Show', shortened_link %></td>
+        <td><%= link_to 'Edit', edit_shortened_link_path(shortened_link) %></td>
+        <td><%= link_to 'Destroy', shortened_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shortened Link', new_shortened_link_path %>

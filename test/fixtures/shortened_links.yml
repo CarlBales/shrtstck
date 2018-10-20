@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  original_url: MyText
+  short_url_slug: MyString
+  visit_count: 1
+  is_expired: false
+
+two:
+  original_url: MyText
+  short_url_slug: MyString
+  visit_count: 1
+  is_expired: false

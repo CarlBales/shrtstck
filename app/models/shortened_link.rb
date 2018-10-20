@@ -1,0 +1,2 @@
+class ShortenedLink < ApplicationRecord
+end

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Original url:</strong>
+  <%= @shortened_link.original_url %>
+</p>
+
+<p>
+  <strong>Short url slug:</strong>
+  <%= @shortened_link.short_url_slug %>
+</p>
+
+<p>
+  <strong>Visit count:</strong>
+  <%= @shortened_link.visit_count %>
+</p>
+
+<p>
+  <strong>Is expired:</strong>
+  <%= @shortened_link.is_expired %>
+</p>
+
+<%= link_to 'Edit', edit_shortened_link_path(@shortened_link) %> |
+<%= link_to 'Back', shortened_links_path %>
