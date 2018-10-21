@@ -17,7 +17,7 @@
     <% @shortened_links.each do |shortened_link| %>
       <tr>
         <td><%= shortened_link.original_url %></td>
-        <td><%= shortened_link.short_url_slug %></td>
+        <td><%= shortened_link.copy_safe_shortened_link %></td>
         <td><%= shortened_link.visit_count %></td>
         <td><%= shortened_link.is_expired %></td>
         <td><%= link_to 'Show', shortened_link %></td>

@@ -1,6 +1,42 @@
 <h1>Editing Shortened Link</h1>
 
-<%= render 'form', shortened_link: @shortened_link %>
+<%= form_for @shortened_link do |form| %>
+  <% if @shortened_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shortened_link.errors.count, "error") %> prohibited this shortened_link from being saved:</h2>
+
+      <ul>
+      <% @shortened_link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <strong>Original URL:</strong>
+    <%= @shortened_link.original_url %>
+  </p>
+
+  <p>
+    <strong>Shortened Link:</strong>
+    <%= @shortened_link.copy_safe_shortened_link %>
+  </p>
+
+  <p>
+    <strong>Visit Count:</strong>
+    <%= @shortened_link.visit_count %>
+  </p>
+
+  <div class="field">
+    <%= form.label :is_expired %>
+    <%= form.check_box :is_expired %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Show', @shortened_link %> |
 <%= link_to 'Back', shortened_links_path %>

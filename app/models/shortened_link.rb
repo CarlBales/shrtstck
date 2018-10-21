@@ -11,7 +11,9 @@ class ShortenedLink < ApplicationRecord
     # for http prepend in sanitize_original_url
     # /\Ahttps?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)\z/
 
-
+    def copy_safe_shortened_link
+        'http://localhost:3000/s/' + self.short_url_slug
+    end
 
     protected
     # Set the default vaules for a new shortened link
