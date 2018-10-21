@@ -61,14 +61,23 @@ class ShortenedLinksController < ApplicationController
     end
   end
 
+  def shortened
+    @shortened_link = find_shortend_link
+    redirect_to @shortened_link.original_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shortened_link
       @shortened_link = ShortenedLink.find(params[:id])
     end
 
+    def find_shortend_link
+      @shotened_link = ShortenedLink.find_by_short_url_slug(params[:short_url_slug])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def shortened_link_params
-      params.require(:shortened_link).permit(:original_url, :short_url_slug, :visit_count, :is_expired)
+      params.require(:shortened_link).permit(:original_url)
     end
 end
