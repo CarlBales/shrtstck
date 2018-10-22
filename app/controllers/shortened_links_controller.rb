@@ -62,10 +62,10 @@ class ShortenedLinksController < ApplicationController
   end
 
   def shortened
-    @shortened_link = find_shortend_link
+    @shortened_link = find_shortend_link or not_found
     unless @shortened_link.is_expired
       increment_visits
-      redirect_to @shortened_link.original_url 
+      redirect_to @shortened_link.original_url, :status => 301
     else
       # TODO: Not found screen
     end
@@ -88,6 +88,6 @@ class ShortenedLinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shortened_link_params
-      params.require(:shortened_link).permit(:original_url, :visit_count, :is_expired)
+      params.require(:shortened_link).permit(:original_url, :is_expired)
     end
 end
