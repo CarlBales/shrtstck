@@ -7,7 +7,7 @@
 
 <p>
   <strong>Short Link:</strong>
-  <%= 'http://localhost:3000/s/' + @shortened_link.short_url_slug %>
+  <%= request.base_url + '/s/' + @shortened_link.short_url_slug %>
 </p>
 
 <p>
