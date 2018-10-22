@@ -71,6 +71,12 @@ class ShortenedLinksController < ApplicationController
     end
   end
 
+  def expire_link
+    @shortened_link = find_shortend_link
+    @shortened_link.is_expired = true
+    @shortened_link.save
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shortened_link
