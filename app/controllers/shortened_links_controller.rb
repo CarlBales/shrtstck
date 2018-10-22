@@ -67,7 +67,7 @@ class ShortenedLinksController < ApplicationController
       increment_visits
       redirect_to @shortened_link.original_url, :status => 301
     else
-      # TODO: Not found screen
+      not_found
     end
   end
 
