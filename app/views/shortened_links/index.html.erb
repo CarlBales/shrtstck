@@ -9,7 +9,7 @@
       <th>Short Link</th>
       <th>Visits</th>
       <th>Is Expired?</th>
-      <th colspan="1"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -21,6 +21,7 @@
         <td><%= shortened_link.visit_count %></td>
         <td><%= shortened_link.is_expired %></td>
         <td><%= link_to 'Manage Link', edit_shortened_link_path(shortened_link) %></td>
+        <td><%= link_to "#{ shortened_link.is_expired ? 'Activate Link' : 'Expire Link' }", toggle_expire_link_status_shortened_link_path(shortened_link), method: :patch, remote: :true %></td>
       </tr>
     <% end %>
   </tbody>

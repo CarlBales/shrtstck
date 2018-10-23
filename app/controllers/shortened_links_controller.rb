@@ -1,5 +1,5 @@
 class ShortenedLinksController < ApplicationController
-  before_action :set_shortened_link, only: [:show, :edit, :update, :destroy]
+  before_action :set_shortened_link, only: [:show, :edit, :update, :destroy, :toggle_expire_link_status]
 
   # GET /shortened_links
   # GET /shortened_links.json
@@ -71,10 +71,8 @@ class ShortenedLinksController < ApplicationController
     end
   end
 
-  def expire_link
-    @shortened_link = find_shortend_link
-    @shortened_link.is_expired = true
-    @shortened_link.save
+  def toggle_expire_link_status
+    @shortened_link.toggle!(:is_expired)
   end
 
   private
