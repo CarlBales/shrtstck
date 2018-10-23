@@ -73,6 +73,9 @@ class ShortenedLinksController < ApplicationController
 
   def toggle_expire_link_status
     @shortened_link.toggle!(:is_expired)
+    respond_to do |format|
+      format.html { redirect_to shortened_links_url, notice: "#{@shortened_link.short_url_slug} was was updated" }
+    end
   end
 
   private
