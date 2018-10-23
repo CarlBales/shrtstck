@@ -1,26 +1,24 @@
-<h1>New Shortened Link</h1>
 
-<%= form_for @shortened_link do |form| %>
-  <% if @shortened_link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@shortened_link.errors.count, "error") %> prohibited this shortened_link from being saved:</h2>
+<div class="container">
+  <h1>ShrtStack: A Link Shortener</h1>
 
-      <ul>
-      <% @shortened_link.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <%= form_for @shortened_link do |form| %>
+    <% if @shortened_link.errors.any? %>
+        <% @shortened_link.errors.full_messages.each do |message| %>
+          <div class="alert alert-danger" role="alert"> <%= message %> </div>
+        <% end %>
+    <% end %>
+    <div class="form-group">
+      <div class="field">
+        <%= form.label :original_url %>
+        <%= form.text_area :original_url, size: "120x4", class: "form-control" %>
+      </div>
     </div>
+    
+    <div class="actions">
+      <%= form.submit :Submit, class:"btn btn-primary" %>
+    </div>
+    
   <% end %>
-
-  <div class="field">
-    <%= form.label :original_url %>
-    <%= form.text_area :original_url, size: "120x4" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
+</div>
 

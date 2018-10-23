@@ -1,32 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<h1>Shortened Links</h1>
+  <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Original Link</th>
-      <th>Short Link</th>
-      <th>Visits</th>
-      <th>Is Expired?</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+  <h1>Shortened Links</h1>
 
-  <tbody>
-    <% @shortened_links.each do |shortened_link| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= shortened_link.original_url %></td>
-        <td><%= link_to request.base_url + '/s/' + shortened_link.short_url_slug, '/s/' + shortened_link.short_url_slug %></td>
-        <td><%= shortened_link.visit_count %></td>
-        <td><%= shortened_link.is_expired %></td>
-        <td><%= link_to 'Manage Link', edit_shortened_link_path(shortened_link) %></td>
-        <td><%= link_to "#{ shortened_link.is_expired ? 'Activate Link' : 'Expire Link' }", toggle_expire_link_status_shortened_link_path(shortened_link), method: :patch, remote: :true %></td>
+        <th>Original Link</th>
+        <th>Short Link</th>
+        <th>Visits</th>
+        <th>Is Expired?</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @shortened_links.each do |shortened_link| %>
+        <tr>
+          <td><%= shortened_link.original_url %></td>
+          <td><%= link_to request.base_url + '/s/' + shortened_link.short_url_slug, '/s/' + shortened_link.short_url_slug %></td>
+          <td><%= shortened_link.visit_count %></td>
+          <td><%= shortened_link.is_expired %></td>
+          <td><%= link_to 'Manage Link', edit_shortened_link_path(shortened_link) %></td>
+          <td><%= link_to "#{ shortened_link.is_expired ? 'Activate Link' : 'Expire Link' }", toggle_expire_link_status_shortened_link_path(shortened_link), method: :patch, remote: :true %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Shortened Link', new_shortened_link_path %>
+  <br>
+
+  <%= link_to 'New Shortened Link', new_shortened_link_path %>
+
+</div>

@@ -1,20 +1,22 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Original Link:</strong>
-  <%= @shortened_link.original_url %>
-</p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Short Link:</strong>
-  <%= request.base_url + '/s/' + @shortened_link.short_url_slug %>
-</p>
+  <p>
+    <strong>Original Link:</strong>
+    <%= @shortened_link.original_url %>
+  </p>
 
-<p>
-  <strong>Visits:</strong>
-  <%= @shortened_link.visit_count %>
-</p>
+  <p>
+    <strong>Short Link:</strong>
+    <%= request.base_url + '/s/' + @shortened_link.short_url_slug %>
+  </p>
 
-<%= link_to 'Edit this Link', edit_shortened_link_path(@shortened_link) %> |
-<%= link_to 'Manage Links', shortened_links_path %>
+  <p>
+    <strong>Visits:</strong>
+    <%= @shortened_link.visit_count %>
+  </p>
 
+  <%= link_to 'Edit this Link', edit_shortened_link_path(@shortened_link) %> |
+  <%= link_to 'Manage Links', shortened_links_path %>
+</div>
