@@ -1,5 +1,5 @@
 class ShortenedLinksController < ApplicationController
-  before_action :set_shortened_link, only: [:show, :edit, :update, :destroy]
+  before_action :set_shortened_link, only: [:show, :edit, :update, :destroy, :toggle_expire_link_status]
 
   # GET /shortened_links
   # GET /shortened_links.json
@@ -67,7 +67,14 @@ class ShortenedLinksController < ApplicationController
       increment_visits
       redirect_to @shortened_link.original_url, :status => 301
     else
-      # TODO: Not found screen
+      not_found
+    end
+  end
+
+  def toggle_expire_link_status
+    @shortened_link.toggle!(:is_expired)
+    respond_to do |format|
+      format.html { redirect_to shortened_links_url, notice: "#{@shortened_link.short_url_slug} was was updated" }
     end
   end
 

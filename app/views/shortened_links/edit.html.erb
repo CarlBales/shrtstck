@@ -20,7 +20,7 @@
 
   <p>
     <strong>Shortened Link:</strong>
-    <%= @shortened_link.copy_safe_shortened_link %>
+    <%= request.base_url + '/s/' + @shortened_link.short_url_slug %>
   </p>
 
   <p>
@@ -38,5 +38,5 @@
   </div>
 <% end %>
 
-<%= link_to 'Show', @shortened_link %> |
-<%= link_to 'Back', shortened_links_path %>
+<%= link_to 'Show Link', @shortened_link %> |
+<%= link_to 'All Links', shortened_links_path %>

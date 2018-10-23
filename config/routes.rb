@@ -7,4 +7,10 @@ Rails.application.routes.draw do
   scope '/admin' do
     resources :shortened_links, only: [:index, :update]
   end
+
+  resources :shortened_links do
+    member do
+      patch :toggle_expire_link_status
+    end
+  end
 end
