@@ -1,7 +1,8 @@
 
 <div class="container">
-  <h1>ShrtStack: A Link Shortener</h1>
-
+  <div class="row">
+    <h1>ShrtStack: A Link Shortener</h1>
+  </div>
   <%= form_for @shortened_link do |form| %>
     <% if @shortened_link.errors.any? %>
         <% @shortened_link.errors.full_messages.each do |message| %>
@@ -14,7 +15,6 @@
         <%= form.text_area :original_url, size: "120x4", class: "form-control" %>
       </div>
     </div>
-    
     <div class="actions">
       <%= form.submit :Submit, class:"btn btn-primary" %>
     </div>
